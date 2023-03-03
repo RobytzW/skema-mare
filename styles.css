@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fontSize: 1rem;
+    --blueDacnis: #46c5f3;
+    --svgColor: #2193b0;
+    --underlineEffectColor: black;
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    gap: 20px;
+}
+
+#backgroundSVG {
+    right: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1000;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    padding: 30px 50px;
+}
+
+header ul {
+    display: flex;
+    gap: 50px;
+    margin-right: 5rem;
+}
+
+header ul li {
+    list-style-type: none;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: calc(2.5 * var(--fontSize));
+    font-weight: bold;
+    display: block;
+    transition: all .3s ease-out;
+}
+
+.underlineEffect {
+    display: inline-block;
+    padding-top: .2rem;
+    position: relative;
+}
+
+.underlineEffect::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--underlineEffectColor);
+    transition: width .3s ease-out;
+}
+
+.underlineEffect:hover::before {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    gap: 30px;
+    width: 100%;
+    height: 70%;
+}
+
+.info h2{
+    font-size: calc(4 * var(--fontSize));
+    font-weight: bolder;
+}
+
+.info h4 {
+    font-size: calc(2.2 * var(--fontSize));
+    font-weight: bolder;
+    max-width: 45%;
+    min-width: 40%;
+}
+
+.content .secondSection {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    padding: 0 50px;
+}
+
+.content .secondSection a {
+    text-decoration: none;
+    color: white;
+    font-size: calc(2 * var(--fontSize));
+    font-weight: bold;
+    padding: 25px;
+    background-color: #374955;
+    border-radius: 20px;
+    box-shadow: 0 0 2px 2px black;
+}
+
+.content .line {
+    min-height: 10px;
+    width: 15%;
+    background-color: var(--svgColor);
+    border-radius: 10px;
+}
+
+.heart{
+	font-size: 150px;
+	color: red;
+	animation: beat .75s infinite alternate;
+	transform-origin: center;
+}
+
+.secondHeart {
+    display: none;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { 
+        transform: scale(1.5); 
+    }
+}
+
+#docPhoto1 {
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 60%;
+    z-index: -15;
+}
+
+#docPhoto2 {
+    position: absolute;
+    bottom: 0;
+    right: -250px;
+    width: 50%;
+    height: 60%;
+    z-index: -20;
+}
+
+#docPhoto3 {
+    position: absolute;
+    bottom: 0;
+    right: 250px;
+    width: 50%;
+    height: 60%;
+    z-index: -20;
+}
+
+@media (769px <= width <= 1279px) {
+
+    :root {
+        --fontSize: 10px;
+    }
+
+    body {
+        background-color: var(--svgColor);
+        overflow: scroll;
+        gap: 15px;
+    }
+
+    #backgroundSVG, #docPhoto2, #docPhoto3 {
+        display: none;
+    }
+
+    header {
+        padding: 5px 10px;
+        justify-content: space-between;
+    }
+
+    .brandLogo a img {
+        width: 200px;
+        height: 150px;
+    }
+
+    header .navbarLinks ul{
+        justify-content: flex-end;
+        gap: 2px;
+        padding: 3px;
+        margin-right: 0;
+    }
+
+    .content .info {
+        align-items: center;
+        gap: 0;
+    }
+
+    .content .info h4 {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .content .secondSection {
+        margin: 0 auto;
+        max-width: 90%;
+        justify-content: center;
+        align-items: flex-end;
+        padding-top: 15px;
+    }
+
+    .content .secondSection a {
+        width: 100%;
+        text-align: center;
+        align-self: flex-start;
+        text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    }
+
+    #docPhoto1 {
+        width: 100%;
+        height: 50%;
+    }
+
+    .heart {
+        display: inline;
+        position: absolute;
+        align-self: center;
+        transform-origin: center;
+        top: 50%;
+    }
+
+    .firstHeart {
+        left: 50px;
+        transform: rotate(-25deg);
+        animation: beat1 .75s infinite alternate;
+    }
+
+    .secondHeart {
+        right: 50px;
+        transform: rotate(25deg);
+        animation: beat2 .75s infinite alternate;
+    }
+
+    @keyframes beat1{
+        to { 
+            transform: scale(1.5);
+            transform: rotate(25deg);
+        }
+    }
+
+    @keyframes beat2{
+        to { 
+            transform: scale(1.5);
+            transform: rotate(-25deg);
+        }
+    }
+}
+
+@media (481px <= width <= 768px) {
+    
+    :root {
+        --fontSize: 7.6px;
+    }
+
+    body {
+        background-color: var(--svgColor);
+        overflow: scroll;
+        gap: 30px;
+    }
+
+    #backgroundSVG, #docPhoto2, #docPhoto3 {
+        display: none;
+    }
+
+    header {
+        padding: 5px 10px;
+        justify-content: space-between;
+    }
+
+    .brandLogo a img {
+        width: 120px;
+        height: 80px;
+    }
+
+    header .navbarLinks ul{
+        justify-content: flex-end;
+        gap: 2px;
+        padding: 3px;
+        margin-right: 0;
+    }
+
+    .content .info {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .content .info h4 {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .content .secondSection {
+        margin: 0 auto;
+        max-width: 90%;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 0;
+        padding-top: 30px;
+    }
+
+    .content .secondSection a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-start;
+        text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+        padding: 30px 0;
+    }
+
+    #docPhoto1 {
+        width: 100%;
+        height: 40%;
+    }
+
+    .heart {
+        display: inline;
+        position: absolute;
+        align-self: center;
+        transform-origin: center;
+        top: 50%;
+    }
+
+    .firstHeart {
+        left: 50px;
+        animation: beat1 .75s infinite alternate;
+    }
+
+    .secondHeart {
+        right: 50px;
+        animation: beat2 .75s infinite alternate;
+    }
+
+    @keyframes beat1{
+        to { 
+            transform: scale(0.5);
+        }
+    }
+
+    @keyframes beat2{
+        to { 
+            transform: scale(0.5);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    
+    :root {
+        --fontSize: 7.1px;
+    }
+
+    body {
+        background-color: var(--svgColor);
+        overflow: scroll;
+        gap: 30px;
+    }
+
+    #backgroundSVG, #docPhoto2, #docPhoto3 {
+        display: none;
+    }
+
+    header {
+        padding: 5px 10px;
+        justify-content: space-between;
+    }
+
+    .brandLogo a img {
+        width: 120px;
+        height: 80px;
+    }
+
+    header .navbarLinks ul{
+        justify-content: flex-end;
+        gap: 2px;
+        padding: 3px;
+        margin-right: 0;
+    }
+
+    .content .info {
+        align-items: center;
+        gap: 15px;
+    }
+
+    .content .info h4 {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .content .secondSection {
+        margin: 0 auto;
+        max-width: 90%;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 0;
+        padding-top: 50px;
+    }
+
+    .content .secondSection a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-start;
+        text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+        padding: 30px 0;
+    }
+
+    #docPhoto1 {
+        width: 100%;
+        height: 40%;
+    }
+
+    .heart {
+        display: none;
+    }
+}
